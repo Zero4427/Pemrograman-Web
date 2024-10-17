@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sora', sans-serif;
+        }
+
+        body {
+            min-width: 320px;
+            line-height: 1.6; /* Perbaikan: Agar teks lebih mudah dibaca */
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo-container {
+            width: 400px;
+            height: 85px;
+            margin-bottom: 5px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px;
+        }
+
+        /* Search and Auth Container */
+        .top-actions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1365px;
+            position: absolute;
+            top: 20px;
+            padding: 0 20px;
+        }
+
+        .search-container input {
+            width: 300px;
+            height: 35px;
+            border-radius: 30px;
+            border: 2px solid #113826;
+            padding: 0 25px;
+            font-size: 16px;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .sign-in {
+            width: 100px;
+            height: 25px;
+            background: #113826;
+            color: #FFFFFF;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .sign-up {
+            color: #113826;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero-image {
+            width: 1365px;
+            height: 389px;
+            max-width: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+            margin: 0 auto 50px;
+            display: block;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            display: flex;
+            width: 30%;
+            border-radius: 10px;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .feature-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #113826;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            text-align: justify;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #113826;
+            color: white;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            width: 150px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .hero-image {
+                width: 95%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-actions {
+                position: relative;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .search-container input {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card p {
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="top-actions">
+            <div class="search-container">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="auth-buttons">
+                <a href="#" class="sign-in">Sign In</a>
+                <a href="#" class="sign-up">Sign Up</a>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <img src="logo-hitam.png" alt="Poetik Logo">
+        </div>
+
+        <nav class="nav-links">
+            <a href="#">News</a>
+            <a href="#">About Us</a>
+            <a href="#">Exchange</a>
+            <a href="#">FAQ</a>
+        </nav>
+    </header>
+
+    <img src="Karung.png" alt="Hero Image" class="hero-image">
+
+    <div class="features">
+        <div class="feature-card">
+            <img src="Recycle.png" alt="Recycling">
+            <h2>Recycle</h2>
+            <p>Recycle adalah langkah sederhana yang mampu mengubah sampah menjadi sumber daya berharga untuk menjaga bumi tetap hijau.</p>
+        </div>
+        <div class="feature-card">
+            <img src="Sampah.png" alt="Environmental">
+            <h2>Environmental Impact</h2>
+            <p>Penukaran sampah memungkinkan kamu mengubah limbah yang tak terpakai menjadi nilai ekonomi, sekaligus berkontribusi menjaga lingkungan yang lebih bersih.</p>
+        </div>
+        <div class="feature-card">
+            <img src="Aqua.png" alt="Sustainable">
+            <h2>Sustainable Living</h2>
+            <p>Pemanfaatan sampah secara kreatif membuka peluang untuk mengubah limbah menjadi produk bernilai guna, mendukung gaya hidup berkelanjutan.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="logo-emas.png" alt="Poetik Logo">
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="discord.svg" alt="Discord"></a>
+                <a href="#"><img src="youtube.svg" alt="YouTube"></a>
+                <a href="#"><img src="tiktok.svg" alt="TikTok"></a>
+                <a href="#"><img src="twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="instagram.svg" alt="Instagram"></a>
+                <a href="#"><img src="whatsapp.svg" alt="WhatsApp"></a>
+                <a href="#"><img src="facebook.svg" alt="Facebook"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
