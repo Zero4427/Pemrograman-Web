@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 16px;
+            background: #669bbc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+        .todo-item:hover {
+            background-color: #e0f7fa;
+        }
+        .todo-item input[type="text"] {
+            flex: 1;
+        }
+        .todo-item.editing .todo-text {
+            display: none;
+        }
+        .todo-item:not(.editing) .edit-input {
+            display: none;
+        }
+        .btn-group {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+        }
+        .delete-btn {
+            background: #f44336;
+        }
+        .delete-btn:hover {
+            background: #da190b;
+        }
+        .edit-btn {
+            background: #2196F3;
+        }
+        .edit-btn:hover {
+            background: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div class="input-container">
+        <input type="text" id="todoInput" placeholder="Add new task...">
+        <button onclick="addTodo()">Add</button>
+    </div>
+    <div id="todoList"></div>
+
+    <script>
+        let todos = [];
+
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const text = input.value.trim();
+            
+            if (text) {
+                todos.push({
+                    id: Date.now(),
+                    text: text,
+                    isEditing: false
+                });
+                input.value = '';
+                renderTodos();
+            }
+        }
+
+        function deleteTodo(id) {
+            todos = todos.filter(todo => todo.id !== id);
+            renderTodos();
+        }
+
+        function startEditing(id) {
+            todos = todos.map(todo => ({
+                ...todo,
+                isEditing: todo.id === id
+            }));
+            renderTodos();
+        }
+
+        function saveEdit(id) {
+            const editInput = document.querySelector(`#edit-${id}`);
+            const newText = editInput.value.trim();
+            
+            if (newText) {
+                todos = todos.map(todo => 
+                    todo.id === id ? { ...todo, text: newText, isEditing: false } : todo
+                );
+                renderTodos();
+            }
+        }
+
+        function renderTodos() {
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = todos.map(todo => `
+                <div class="todo-item ${todo.isEditing ? 'editing' : ''}">
+                    <span class="todo-text">${todo.text}</span>
+                    <input type="text" class="edit-input" id="edit-${todo.id}" 
+                           value="${todo.text}" ${todo.isEditing ? 'autofocus' : ''}>
+                    <div class="btn-group">
+                        ${
+                            todo.isEditing 
+                            ? `<button onclick="saveEdit(${todo.id})">Save</button>` 
+                            : `<button class="edit-btn" onclick="startEditing(${todo.id})">Edit</button>`
+                        }
+                        <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('todoInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+
+        renderTodos();
+    </script>
+</body>
+</html>

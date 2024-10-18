@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran & Kalkulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #113628;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .form-section {
+            background-color: #2d6a4f;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        .calculator-section {
+            background-color: #2d6a4f;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #1b4332;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #081c15;
+        }
+
+        #result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Form Pendaftaran -->
+        <div class="form-section">
+            <h2>Form Pendaftaran</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Nomor Telepon:</label>
+                    <input type="text" id="phone" name="phone">
+                </div>
+                <button type="submit">Daftar</button>
+            </form>
+        </div>
+
+        <!-- Kalkulator -->
+        <div class="calculator-section">
+            <h2>Kalkulator</h2>
+            <div class="form-group">
+                <label for="num1">Bilangan Pertama:</label>
+                <input type="number" id="num1" name="num1">
+            </div>
+            <div class="form-group">
+                <label for="num2">Bilangan Kedua:</label>
+                <input type="number" id="num2" name="num2">
+            </div>
+            <button onclick="calculate()">Jumlahkan</button>
+            <button onclick="resetCalculator()">Reset</button>
+            <div id="result">Hasil: 0</div>
+        </div>
+    </div>
+
+    <script>
+        // Form Validation
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            if (!name || !email || !phone) {
+                alert('Semua field harus diisi!');
+                return;
+            }
+
+            alert('Pendaftaran berhasil!');
+            this.reset();
+        });
+
+        // Calculator Functions
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            const result = num1 + num2;
+            document.getElementById('result').textContent = `Hasil: ${result}`;
+        }
+
+        function resetCalculator() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('result').textContent = 'Hasil: 0';
+        }
+    </script>
+</body>
+</html>
