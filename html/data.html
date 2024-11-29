@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .action-btn {
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+        .edit-btn {
+            background-color: #ffcc00;
+            color: #fff;
+        }
+        .delete-btn {
+            background-color: #ff0000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>News Management</h1>
+
+    <!-- Form untuk Create/Update -->
+    <div class="form-container">
+        <h2>Add / Update News</h2>
+        <form id="news-form">
+            <input type="hidden" id="news-id" />
+            <input type="text" id="news-title" placeholder="Title" required />
+            <textarea id="news-content" placeholder="Content" rows="5" required></textarea>
+            <button type="submit">Save News</button>
+        </form>
+    </div>
+
+    <!-- Tabel untuk Menampilkan Data -->
+    <h2>News List</h2>
+    <table id="news-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Raw JSON Data</h2>
+    <pre id="json-output" style="background: #f4f4f4; padding: 10px; border: 1px solid #ddd;"></pre>
+
+
+    <script>
+        const apiUrl = 'http://localhost/Poetik/api/news.php'; // Ganti dengan path PHP Anda
+
+        // Fungsi untuk mengambil data dari API dan menampilkan di tabel
+        async function fetchNews() { //Bisa ditambahkan lainnya 
+            try {
+                const response = await fetch(apiUrl); // Ambil data dari API
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const news = await response.json(); // Ubah data menjadi format JSON
+                console.log("Data dari API:", news); // Log untuk debugging
+
+                // Menampilkan data JSON mentah di halaman
+                document.getElementById('json-output').textContent = JSON.stringify(news, null, 2);
+
+                const tbody = document.querySelector('#news-table tbody');
+                tbody.innerHTML = ''; // Bersihkan tabel sebelum menampilkan data
+
+                news.forEach(item => {
+                    const row = `
+                        <tr>
+                            <td>${item.id}</td>
+                            <td>${item.title}</td>
+                            <td>${item.content}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row; // Tambahkan baris ke tabel
+                });
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                alert("Gagal mengambil data. Periksa API atau koneksi server.");
+            }
+        }
+
+        // Panggil fungsi untuk mengambil dan menampilkan data
+        fetchNews();
+    </script>
+    
+</body>
+</html>

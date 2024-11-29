@@ -1,0 +1,119 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora', sans-serif;
+}
+
+body {
+    height: 100vh; /* Memastikan body mengambil seluruh tinggi layar */
+    background-image: url('../assets/background-login.jpg'); /* Menambahkan gambar Karung sebagai background */
+    background-size: cover; /* Agar gambar mengisi seluruh layar */
+    background-position: center; /* Memastikan gambar berada di tengah */
+    background-attachment: fixed; /* Gambar tetap saat scroll */
+    display: flex;
+    justify-content: flex-start; /* Memindahkan form ke sebelah kiri */
+    align-items: center; /* Memastikan form tetap berada di tengah secara vertikal */
+    padding-left: 20px; /* Menambahkan jarak dari sisi kiri */
+}
+
+/* Login Box */
+.login-box {
+    background: rgba(255, 255, 255, 0.8); /* Menambahkan sedikit transparansi agar gambar tetap terlihat */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Membatasi lebar form login */
+    position: relative;
+    margin-left: 40px; /* Memberi jarak agar form tidak terlalu dekat dengan sisi kiri */
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #113826;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.input-group input:focus {
+    border-color: #113826;
+    outline: none;
+}
+
+/* Buttons */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: #113826;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background: #0e2d20;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #113826;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Sign Up Link */
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-link a {
+    color: #113826;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

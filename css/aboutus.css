@@ -1,0 +1,295 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora', sans-serif;
+}
+
+body {
+    font-family: 'Sora', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.logo-container {
+    width: 400px;
+    height: 85px;
+    margin-bottom: 5px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+}
+
+/* Search and Auth Container */
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1365px;
+    position: absolute;
+    top: 20px;
+    padding: 0 20px;
+}
+
+.search-container input {
+    width: 300px;
+    height: 35px;
+    border-radius: 30px;
+    border: 2px solid #113826;
+    padding: 0 25px;
+    font-size: 16px;
+}
+
+.hero-image {
+    width: 1415px;
+    height: 689px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    margin: 0 auto 50px;
+    display: block;
+}
+
+/* About Section */
+.about-section {
+    background-color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.about-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #113826;
+}
+
+.about-container p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Vision and Mission Section */
+.vision-mission {
+    display: flex;
+    gap: 40px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.vision, .mission {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.vision h2, .mission h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #113826;
+}
+
+.vision p, .mission ul {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.mission ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.mission ul li {
+    margin-bottom: 10px;
+}
+
+/* Styling untuk bagian Our Partners */
+.partners-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.partners-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.partners-container p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Menggunakan Flexbox untuk menata logo partners */
+.partners-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Memberi jarak antar logo */
+    flex-wrap: wrap; /* Agar logo bisa responsif */
+}
+
+.partner-logo img {
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.partner-logo img:hover {
+    transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+/* Tombol 'See Members' */
+.view-partners-button {
+    background-color: #113826;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.view-partners-button:hover {
+    background-color: #113826;
+}
+
+/* Footer */
+footer {
+    background: #113826;
+    color: white;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-logo {
+    width: 150px;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .hero-image {
+        width: 95%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-actions {
+        position: relative;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .search-container input {
+        width: 100%;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .feature-card {
+        width: 100%;
+    }
+
+    .footer-right {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
